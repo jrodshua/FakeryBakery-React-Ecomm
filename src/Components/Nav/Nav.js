@@ -21,11 +21,16 @@ const NavDiv = styled.div`
     button {
         border: none;
         background-color: inherit;
-        font-size: 1.7rem;
+        font-size: 1.2rem;
         color: ${props => props.color || '#F7268A'};
         padding: 0;
         cursor: pointer;
+
+        @media (min-width: 250px) {
+            font-size: 1.5rem;
+        }
     }
+
 
     @media (min-width: 700px) {
         padding: 0 0.5rem;

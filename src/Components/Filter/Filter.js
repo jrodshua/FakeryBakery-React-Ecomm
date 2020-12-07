@@ -40,18 +40,59 @@ const Wrapper = styled.div`
         margin-left: 1.5rem;
     }
 
-    div.DESSERTS button {
-        display: ${({ open }) => (open === 1) ? 'flex' : 'none'};
-    }
+    @media (max-width: 850px) {
+        div.DESSERTS button {
+            display: ${({ open }) => (open === 1) ? 'flex' : 'none'};
+        }
 
-    div.CELEBRATION button {
-        display: ${({ open }) => (open === 2) ? 'flex' : 'none'};
-    }
+        div.CELEBRATION button {
+            display: ${({ open }) => (open === 2) ? 'flex' : 'none'};
+        }
 
-    div.MORE button {
-        display: ${({ open }) => (open === 3) ? 'flex' : 'none'};
+        div.MORE button {
+            display: ${({ open }) => (open === 3) ? 'flex' : 'none'};
+        }
     }
+    
+    @media (min-width: 850px) {
+        display: ${({ view }) => view ? 'flex' : 'none'};
+        width: 100%;
+        height: 100%;
+        
+        div.DESSERTS button,
+        div.CELEBRATION button,
+        div.MORE button {
+            margin: 0;
+            height: 100%;
+            width: 120px;
+            display: flex;
+            margin-bottom: 0.5rem;
+        }
 
+        div.DESSERTS,
+        div.CELEBRATION,
+        div.MORE {
+            width: 100%;  
+            
+        }
+
+        div.DESSERTS {
+            padding-left: 0.8rem;
+        }
+
+        div.CELEBRATION,
+        div.MORE {
+            border-left: 1px solid lightgray;
+            padding-left: 0.8rem;
+        }
+
+        div.media-div {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+    }
 `;
 
 
@@ -74,6 +115,27 @@ const Section = styled.div`
         margin-left: 1rem;
         padding: 0.5rem 0;
     }
+
+    @media (min-width: 850px) {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        border: none;
+        width: 100%;
+        
+
+        a {
+            display: none;
+        }
+
+        h2 {
+            width: 100%;
+            padding: 0.8rem 0 0 0;
+            margin-bottom: 1rem;
+            text-align: justify;
+            margin-left: 0;
+        }
+    }
 `;
 
 
@@ -88,6 +150,7 @@ export function Filter({ toggle, filter, view, open, openBtn, array }) {
                 </button>
             </Div>
             <Wrapper open={open} view={view}>
+
                 {array.map((i, index) => {
                     return (
                         <div key={index} className={i.name}>
@@ -95,16 +158,19 @@ export function Filter({ toggle, filter, view, open, openBtn, array }) {
                                 <h2 key={index}>{i.name}</h2>
                                 <a onClick={openBtn} name={i.id}>{!open ? '+' : '-'}</a>
                             </Section>
-                            {i.items.map((n, i) => {
-                                return (
-                                    <div open={open} key={i}>
-                                        <button onClick={filter} value={n} key={n}>{n}</button>
-                                    </div>
-                                )
-                            })}
+                            <div className='media-div'>
+                                {i.items.map((n, i) => {
+                                    return (
+                                        <div open={open} key={i}>
+                                            <button onClick={filter} value={n} key={n}>{n}</button>
+                                        </div>
+                                    )
+                                })}
+                            </div>
                         </div>
                     )
                 })}
+                
             </Wrapper>
         </div>
     )

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const BannerDiv = styled.div`
     width: 100%;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     background-color: #2b2b2b;
     color: #fff5e9;
     height: 3rem;
@@ -11,8 +11,9 @@ const BannerDiv = styled.div`
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
+    text-align: center;
 
-    @media (min-width: 700px) {
+    @media (min-width: 450px) {
         font-size: 1rem;
     }
 `;
