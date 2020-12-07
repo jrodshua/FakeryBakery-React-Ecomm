@@ -14,8 +14,19 @@ const NavDiv = styled.div`
 
     img {
         margin: 0 auto;
-        max-width: 100%;
+        width: 70px;
         height: auto;
+
+        @media (min-width: 200px) {
+            max-width: 100%;
+            width: 100px;
+            height: auto;
+        }
+
+        @media (min-width: 300px) {
+            width: 150px;
+            height: auto;
+        }
     }
 
     button {
@@ -49,7 +60,7 @@ export function Nav(props) {
 
     return (
         <NavDiv>
-            <img src={logo} alt='logo' style={{ width: 150, height: 45 }} />
+            <img src={logo} alt='logo' />
             <NavIcon open={open}
                      toggle={toggle} />
             <NavMenu open={open} />

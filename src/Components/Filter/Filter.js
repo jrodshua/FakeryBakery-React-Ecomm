@@ -7,21 +7,29 @@ const Div = styled.div`
     justify-content: center;
     align-items: center;
     background-color: #fff5e9;
-    font-size: 1rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     font-weight: bold;
     padding: 0.2rem 0;
     color: #2b2b2b;
+
+    @media (min-width: 300px) {
+        font-size: 1rem;
+    }
     
 
     button {
         border: none;
         background-color: inherit;
         color: #F7268A;
-        font-size: 2rem;
+        font-size: 1rem;
         padding: 0;
         display: flex;
-    }
+
+        @media (min-width: 300px) {
+            font-size: 2rem;
+        }
+    } 
 `;
 
 const Wrapper = styled.div`
@@ -40,6 +48,14 @@ const Wrapper = styled.div`
         margin-left: 1.5rem;
     }
 
+    @media (max-width: 300px) {
+        div.DESSERTS button,
+        div.CELEBRATION button,
+        div.MORE button {
+            font-size: 0.7rem;
+        }
+    }
+
     @media (max-width: 850px) {
         div.DESSERTS button {
             display: ${({ open }) => (open === 1) ? 'flex' : 'none'};
@@ -53,6 +69,7 @@ const Wrapper = styled.div`
             display: ${({ open }) => (open === 3) ? 'flex' : 'none'};
         }
     }
+
     
     @media (min-width: 850px) {
         display: ${({ view }) => view ? 'flex' : 'none'};
@@ -104,6 +121,11 @@ const Section = styled.div`
     font-weight: bold;
     padding: 0.5rem 0;
     border-bottom: 1px solid black;
+    font-size: 0.8rem;
+
+    @media (min-width: 300px) {
+        font-size: 1rem;
+    }
 
     a {
         cursor: pointer;
