@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Filter } from './Filter';
+import { FilterContext } from '../../FilterContext';
+
+
+
 
 
 export function FilterContainer() {
     const [view, setView] = useState(false);
-    const [selected, setSelected] = useState('CAKES');
     const [open, setOpen] = useState(0)
+    const [selected, setSelected] = useContext(FilterContext);
 
 
     const arrayFilter = [
@@ -50,26 +54,26 @@ export function FilterContainer() {
 
     function handleOpen({ target }) {
         let name = target.name;
-        if (name == '1' && open == 0) {
+        if (name === '1' && open === 0) {
             setOpen(1)
-        } else if (name == '2' && open == 0) {
+        } else if (name === '2' && open === 0) {
             setOpen(2)
-        } else if (name == '3' && open == 0) {
+        } else if (name === '3' && open === 0) {
             setOpen(3)
-        } else if (name == '1' && open == 1 || name == '2' && open == 2 || name == '3' && open == 3) {
+        } else if (name === '1' && open === 1 || name === '2' && open === 2 || name === '3' && open === 3) {
             setOpen(0)
         }
     }
 
 
     return (
-        <Filter 
-            toggle={handleViewToggle}
-            filter={handleFilter}
-            view={view}
-            open={open}
-            openBtn={handleOpen}
-            array={arrayFilter}
-        />
+            <Filter 
+                toggle={handleViewToggle}
+                filter={handleFilter}
+                view={view}
+                open={open}
+                openBtn={handleOpen}
+                array={arrayFilter}
+            />
     )
 }
